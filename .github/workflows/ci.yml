@@ -47,7 +47,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
 
       - name: Run RSpec
-        run: COVERAGE=true bundle exec rspec
+        run: bundle exec rspec
         env:
           JETS_ENV: test
           RAILS_ENV: test
