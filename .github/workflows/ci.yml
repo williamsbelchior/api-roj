@@ -38,16 +38,12 @@ jobs:
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
-          JETS_ENV=test bundle exec rake db:create
-          JETS_ENV=test bundle exec rake db:schema:load
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
         env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          JETS_ENV: test
 
       - name: Run RSpec
         run: COVERAGE=true bundle exec rspec
         env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          JETS_ENV: test
