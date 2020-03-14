@@ -42,12 +42,14 @@ jobs:
           bundle exec rake db:schema:load
         env:
           JETS_ENV: test
+          RAILS_ENV: test
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres          
+          POSTGRES_PASSWORD: postgres
 
       - name: Run RSpec
         run: COVERAGE=true bundle exec rspec
         env:
           JETS_ENV: test
+          RAILS_ENV: test
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres          
+          POSTGRES_PASSWORD: postgres
