@@ -29,8 +29,8 @@ jobs:
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
-          bundle exec rake db:create
-          bundle exec rake db:schema:load
+          JETS_ENV=test bundle exec rake db:create
+          JETS_ENV=test bundle exec rake db:schema:load
         env:
           RAILS_ENV: test
           POSTGRES_USER: postgres
