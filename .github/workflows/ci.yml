@@ -37,11 +37,13 @@ jobs:
 
   rubocop:
     runs-on: ubuntu-latest
+    steps:
       - name: Run Rubocop
         run: bundle exec rubocop
 
   test:
     runs-on: ubuntu-latest
+    steps:
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
