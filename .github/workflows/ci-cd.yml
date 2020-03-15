@@ -43,7 +43,7 @@ jobs:
         run: bundle exec rubocop
 
   test:
-    needs: [build, rubocop]
+    needs: [build, code-analyzer]
     runs-on: ubuntu-latest
     steps:
       - name: Setup Database
