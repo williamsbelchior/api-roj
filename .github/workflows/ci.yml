@@ -35,9 +35,13 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
-      - name: Rubocop
+  rubocop:
+    runs-on: ubuntu-latest
+      - name: Run Rubocop
         run: bundle exec rubocop
 
+  test:
+    runs-on: ubuntu-latest
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
