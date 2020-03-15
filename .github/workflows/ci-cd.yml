@@ -1,7 +1,7 @@
-name: api-roj
+name: API ROJ CI CD
 on: [pull_request]
 jobs:
-  ci-cd:
+  build:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -35,9 +35,17 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
+  code-analyzer:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Run Rubocop
         run: bundle exec rubocop
 
+  test:
+    needs: [build, rubocop]
+    runs-on: ubuntu-latest
+    steps:
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
