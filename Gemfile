@@ -14,6 +14,9 @@ gem 'pg', '~> 1.1.3'
 
 gem 'dynomite'
 
+gem "actionview", ">= 6.0.2.2"
+
+
 # development and test groups are not bundled as part of the deployment
 group :development, :test do
   gem 'byebug', platforms: %w[mri mingw x64_mingw]
