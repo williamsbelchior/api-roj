@@ -9,15 +9,20 @@ default: &default
   url: <%= ENV['DATABASE_URL'] %> # takes higher precedence than other settings
   reconnect: true
 
-development:
-  <<: *default
-  database: <%= ENV['DB_NAME'] || 'api_roj_development' %>
-
 test:
   <<: *default
   database: api_roj_test
 
+development:
+  <<: *default
+  database: <%= ENV['DB_NAME'] || 'api_roj_development' %>
+
+staging:
+  <<: *default
+  database: api_roj_staging
+  url: <%= ENV['STAGING_DATABASE_URL'] %>
+
 production:
   <<: *default
   database: api_roj_production
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['PRODUCTION_DATABASE_URL'] %>
