@@ -58,7 +58,10 @@ jobs:
           POSTGRES_PASSWORD: postgres
 
       - name: Run deploy staging
-        if: {{ github.ref == 'ref/head/develop' }}
+        on:
+          push:
+            branches:
+              - develop
         run: jets deploy staging
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
