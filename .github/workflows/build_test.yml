@@ -1,7 +1,7 @@
 name: api-roj
 on: pull_request
 jobs:
-  ci-cd:
+  build-and-test:
     runs-on: ubuntu-latest
     services:
       postgres:
